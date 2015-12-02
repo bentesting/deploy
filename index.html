@@ -6,7 +6,7 @@
 				var data = event.data;
 				var postDiv = document.getElementById("post-message");
 				
-				postDiv.innerHTML(data);
+				postDiv.innerHTML = data;
 			}
 			window.addEventListener("message", receiveMessage, false);
 		</script>
