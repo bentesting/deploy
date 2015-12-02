@@ -9,6 +9,7 @@
 				postDiv.innerHTML = data;
 			}
 			window.addEventListener("message", receiveMessage, false);
+			window.parent.postMessage("ready", "*");
 		</script>
 		<div>This is a test of post message</div>
 		<div id="post-message"></div>
