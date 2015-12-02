@@ -2,14 +2,13 @@
 	<head></head>
 	<body>
 		<script>
-			function receiveMessage(event)
-				{
-					console.log(event.data);
-					var postDiv = document.getElementById("post-message");
-					postDiv.innerHTML(event.data);
-				}
+			function receiveMessage(event) {
+				var data = event.data;
+				var postDiv = document.getElementById("post-message");
+				
+				postDiv.innerHTML(data);
+			}
 			window.addEventListener("message", receiveMessage, false);
-			console.log("hello");
 		</script>
 		<div>This is a test of post message</div>
 		<div id="post-message"></div>
