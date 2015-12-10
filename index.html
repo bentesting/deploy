@@ -2,15 +2,15 @@
 	<head></head>
 	<body>
 		<script>
-			// Async loads Azure script.
+			// Loads Azure sdk asynchronously.
 			function addScript(event) {
-				console.log(event.origin);
-				var id = "azure-sdk";
-				var firstScript = document.getElementsByTagName("script")[0];
-				if (document.getElementById(id)) return;
-				var script = document.createElement("script");
-				script.innerText = "console.log('yo my peeps')";
-				firstScript.parentNode.insertBefore(script, firstScript);
+				if (event.data["type"] === "loadSDK") {
+					var id = "azure-sdk", fs = document.getElementsByTagName("script")[0], azs;
+					if (document.getElementById(id)) return;
+					azs = document.createElement("script");
+					azs.innerText = event.data["message"];
+					fs.parentNode.insertBefore(azs, fs);
+				}
 			}
 			
 			function receiveMessage(event) {
