@@ -9,7 +9,7 @@
 				var firstScript = document.getElementsByTagName("script")[0];
 				if (document.getElementById(id)) return;
 				var script = document.createElement("script");
-				script.innerText = event.message;
+				script.innerText = "console.log('yo my peeps')";
 				firstScript.parentNode.insertBefore(script, firstScript);
 			}
 			
