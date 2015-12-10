@@ -2,13 +2,24 @@
 	<head></head>
 	<body>
 		<script>
+			// Async loads Azure script.
+			function addScript(event) {
+				var id = "azure-sdk";
+				var firstScript = d.getElementsByTagName(s)[0];
+				if (document.getElementById(id)) return;
+				var script = document.createElement("script");
+				script.innerText = event.message;
+				firstScript.parentNode.insertBefore(script, firstScript);
+			}
+			
 			function receiveMessage(event) {
+				console.log(event.origin);
 				var data = event.data;
 				var postDiv = document.getElementById("post-message");
 				
 				postDiv.innerHTML = data;
 			}
-			window.addEventListener("message", receiveMessage, false);
+			window.addEventListener("message", addScript, false);
 			window.parent.postMessage("ready", "*");
 		</script>
 		<div>This is a test of post message</div>
