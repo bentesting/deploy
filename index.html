@@ -8,6 +8,7 @@
 					var id = "azure-sdk", fs = document.getElementsByTagName("script")[0], azs;
 					if (document.getElementById(id)) return;
 					azs = document.createElement("script");
+					azs.id = id;
 					azs.innerText = event.data["message"];
 					fs.parentNode.insertBefore(azs, fs);
 				}
@@ -21,6 +22,10 @@
 			}
 			window.addEventListener("message", addScript, false);
 			window.parent.postMessage("ready", "*");
+			
+			Azure.getAuthToken(function(token) {
+				console.log(token);
+			});
 		</script>
 		<div>This is a test of post message</div>
 		<div id="post-message"></div>
