@@ -2,29 +2,13 @@
 	<head></head>
 	<body>
 		<script>
-			// Loads Azure sdk asynchronously.
-			function addScript(event) {
-				if (event.data["type"] === "loadSDK") {
-					var id = "azure-sdk", fs = document.getElementsByTagName("script")[0], azs;
-					if (document.getElementById(id)) return;
-					azs = document.createElement("script");
-					azs.id = id;
-					azs.innerText = event.data["message"];
-					fs.parentNode.insertBefore(azs, fs);
-				}
-				
-				Azure.getAuthToken(function(token) {
-					console.log(token);
-				});
-			}
-			
 			function receiveMessage(event) {
 				var data = event.data;
 				var postDiv = document.getElementById("post-message");
 				
 				postDiv.innerHTML = data;
 			}
-			window.addEventListener("message", addScript, false);
+			window.addEventListener("message", receiveMessage, false);
 			window.parent.postMessage("ready", "*");
 		</script>
 		<div>This is a test of post message</div>
